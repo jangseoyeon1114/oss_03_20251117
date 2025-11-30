@@ -1,10 +1,10 @@
 ![header](https://capsule-render.vercel.app/api?type=Cylinder&color=d6ace6&height=200&section=header&text=리눅스%20명령어에%20대해%20공부해%20보자!&fontSize=50)
 
-### top, ps, jobs, kill을 중심으로
+:heavy_check_mark: ### top, ps, jobs, kill을 중심으로
 
 --------------------------------
 
-## 1. `top`
+##  1. `top`
    
 - 사용하는 방법
   ```
@@ -16,7 +16,7 @@
   - 화면에서 보이는 주요 정보
     : PID, USER, %CPU, %MEM, TIME+, COMMAND
 
-## 예시
+## :computer: 예시
 
 <img width="845" height="164" alt="top" src="https://github.com/user-attachments/assets/24af9ccc-9c8e-4cc7-b7dc-bf05abf377c6" />
 
@@ -39,13 +39,21 @@
 | 1   | root | 0.0  | 0.0  | 0:00.02 | bash    |
 | 13  | root | 0.0  | 0.1  | 0:00.00 | top     |
 
+```
+이 외에도 다양한 옵션들
+-p [PID] : 지정한 PID 값을 가진 프로세스 정보 출력
+-d [초] : 업데이트 주기를 설정 (기본 주기는 3초, 초 단위 설정)
+-n [n] : top을 갱신할 횟수 지정 (n번 갱신 후 종료, -b와 함께 사용)
+-b : 배치 모드로 정보를 출력
+```
+
 --------------------------------
 
 ## 2. `ps`
    
 - 사용하는 방법
   ```
-  $ ps
+  $ ps [옵션]
   ```
   
 > ps 명령어란?
@@ -53,7 +61,7 @@
   - 프로세스의 ID, 사용자, CPU 및 메모리 사용량, 실행 시간 등의 정보를 얻을 수 있다.
  
 
-## 예시
+## :computer: 예시
 
 <img width="577" height="55" alt="ps" src="https://github.com/user-attachments/assets/6d1da3c7-1075-4f7a-bd8f-20fc781bf462" />
 
@@ -76,7 +84,7 @@ ps aux      # BSD 스타일 출력 (CPU, 메모리 사용량 포함)
   <img width="509" height="55" alt="ps -ef" src="https://github.com/user-attachments/assets/92278722-c1a1-4bca-8e25-70fa787c4e1b" />
 
 
-## 추가되는 정보
+## :heavy_plus_sign: 추가되는 정보
 
 - `USD` (프로세스를 실행한 사용자 ID)
 - `PPID` (부모 프로세스 ID)
@@ -88,7 +96,7 @@ ps aux      # BSD 스타일 출력 (CPU, 메모리 사용량 포함)
 
   <img width="578" height="53" alt="ps -aux" src="https://github.com/user-attachments/assets/69fe37fd-0fa6-433e-a3fc-cec87d1b0f95" />
 
-## 추가되는 정보
+## :heavy_plus_sign: 추가되는 정보
 
 - `USER` (실행한 사용자)
 - `%CPU` (CPU 사용률)
@@ -99,7 +107,7 @@ ps aux      # BSD 스타일 출력 (CPU, 메모리 사용량 포함)
 - `START` (시작 시간)
   
 ```
-이 외에도 다양한 옵션들이 있다.
+이 외에도 다양한 옵션들
 -e : 현재 실행 중인 모든 프로세서를 출력
 -f : 실제 유저명, 개시-시간 등을 표시
 -l : 프로세서 상태, 우선도 등의 상세정보 표시
@@ -111,7 +119,7 @@ ps aux      # BSD 스타일 출력 (CPU, 메모리 사용량 포함)
 
 - 사용하는 방법
   ```
-  $ jobs
+  $ jobs [옵션] [jobID]
   ```
   
 > jobs 명령어란?
@@ -120,7 +128,7 @@ ps aux      # BSD 스타일 출력 (CPU, 메모리 사용량 포함)
 - **백그라운드로 실행 중인 프로세스**를 확인한다.
 - 현재 **중지된 프로세스**를 확인한다.
 
-## 예시
+## :computer: 예시
 
 <img width="465" height="35" alt="jobs" src="https://github.com/user-attachments/assets/905ac8f5-1d0e-4a9c-b2ad-83182f8f4c4c" />
 
@@ -147,9 +155,8 @@ $ jobs -n
 
 - 상태가 변경된 작업만 출력한다. (예를 들어 작업이 **실행** 중에서 **중지** 상태로 바뀌었거나 **중지** 상태에서 **실행** 중으로 바뀌었을 때 등)
 
-> 이 외 옵션
-
 ```
+이 외에도 다양한 옵션들
 -l : 프로세스 ID와 함께 목록 출력
 -r : 실행 중인 job만 출력
 -s : 중지된 job만 출력
@@ -167,4 +174,66 @@ $ jobs -n
 | `Stopped(SIGSTOP)`    | SIGSTOP 시그널로 일시 중지         |
 | `Stopped(SIGTTIN)`    | SIGTTIN 시그널로 일시 중지         |
 | `Stopped(SIGTTOU)`    | SIGTTOU 시그널로 일시 중지         |
-  
+
+--------------------------------
+
+## 4. `kill`
+
+- 사용하는 방법
+  ```
+  $ kill [옵션] [프로세스ID]
+  ```
+
+> kill 명령어란?
+- 프로세스에 신호를 보내어 **특정 프로세스를 종료해 주는** 명령어이다.
+- 백그라운드에서 실행되고 있는 작업이 있거나 더 이상 응답이 없는 프로그램을 **강제 종료**할 때 주로 사용한다.
+
+## 주요 옵션
+
+| 옵션                  | 설명                                |
+|-----------------------|-------------------------------------|
+| -l            | 모든 시그널 목록을 표시                       |
+| -s            | 저장한 시그널을 보냄                          |
+| -9            | SIGKILL 시그널을 보내어 강제 종료              |
+| -15           | SIGTERM 시그널을 보내어 정상 종료를 요청       |
+
+## 주요 시그널
+
+| 시그널                  | 설명                                |
+|-----------------------|-------------------------------------|
+| SIGHUP            | 세션 종료 시그널                         |
+| SIGINT            | 인터럽트 시그널                          |
+| SIGKILL           | 강제 종료 시그널                         |
+| SIGTERM           | 정상 종료 요청 시그널                     |
+| SIGSTOP           | 프로세스 일시 정지 시그널                 |
+
+## :computer: 예시 
+
+<img width="1091" height="252" alt="kill 예시" src="https://github.com/user-attachments/assets/ab8d2f19-57f4-4ae0-b961-98a94088df04" />
+
+- 백그라운드에서 실행되게 sleep 300 &을 통해 만들고 **프로세스의 PID를 확인**한다.
+- **-15 55**를 통해 정상 종료를 요청한다.
+- 다시 ps 명령어를 통해 확인해 보면 백그라운드 job이 종료되었음을 알 수 있다.
+
+<img width="587" height="124" alt="kill -9" src="https://github.com/user-attachments/assets/bd9022de-fb7a-43e1-8577-2d1a74ff2039" />
+
+- 다시 300초 동안 대기하는 명령을 백그라운드로 실행한다.
+- ps 명령어를 통해 확인하면 여기서 **PID는 60**인 것을 알 수 있다.
+- 이번엔 -9 옵션을 줬다. **-9는 강제로 즉시 종료**를 하게 하며 다시 ps를 통해 확인하면 Killed(강제 종료됨)을 볼 수 있다.
+
+--------------------------------
+
+> 요약
+
+| 명령어                  | 설명                               |
+|-----------------------|-------------------------------------|
+| `top`                 | 실시간 프로세스/자원 확인             |
+| `ps`                  | 현재 실행 중인 프로세스 목록           |
+| `jobs`                | 백그라운드 작업 목록                  |
+| `kill`                | 프로세스 종료                         |
+
+<img src="https://img.shields.io/badge/OS-Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black">
+
+
+
+
